@@ -1,0 +1,22 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+venv/
+.env
+
+# Ignore HTML files (GitHub Pagesで別管理)
+output/*.html
+
+# Ignore generated files (ワークフローが自動生成)
+last_processed.txt
+
+# Ignore GEE private key (秘密情報)
+private-key.json
+
+# Cache directory - キャッシュファイルは追跡する
+!output/
+!output/cache/
+!output/cache/*.json
+!output/observation_history.json
