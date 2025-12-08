@@ -1,9 +1,11 @@
 name: 麦生育マップ自動更新 (NDVI/NDWI/GNDVI)
+
 on:
   schedule:
-    # 毎日午前2時(JST 11時)に実行
+    # 毎日午前2時(UTC)に実行 = JST 11:00
     - cron: '0 2 * * *'
   workflow_dispatch: # 手動実行も可能
+
 permissions:
   contents: write
   
@@ -30,9 +32,10 @@ jobs:
         GEE_PRIVATE_KEY: ${{ secrets.GEE_PRIVATE_KEY }}
       run: |
         echo "$GEE_PRIVATE_KEY" > private-key.json
-        python - <<EOF
+        python3 << 'EOF'
         import ee
-        service_account = "${{ secrets.GEE_SERVICE_ACCOUNT }}"
+        import os
+        service_account = os.environ['GEE_SERVICE_ACCOUNT']
         credentials = ee.ServiceAccountCredentials(service_account, 'private-key.json')
         ee.Initialize(credentials)
         print("✅ GEE 認証成功")
@@ -56,10 +59,10 @@ jobs:
         CACHE_COUNT=$(ls output/cache/*.json 2>/dev/null | wc -l)
         if [ "$CACHE_COUNT" -eq 0 ]; then
           echo "🔄 初回実行: 全データをキャッシュ化"
-          python generate_maps.py --force-rebuild
+          python3 generate_maps.py --force-rebuild
         else
           echo "🔄 通常実行: 新規日付のみ処理"
-          python generate_maps.py --last-date ${{ steps.last_date.outputs.date }}
+          python3 generate_maps.py --last-date ${{ steps.last_date.outputs.date }}
         fi
         
     - name: 変更確認
@@ -77,7 +80,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         rm -f private-key.json
-        git add output/cache/*.json output/observation_history.json
+        git add output/cache/*.json output/observation_history.json || true
         git add .
         git commit -m "🌾 麦生育マップ自動更新 (NDVI/NDWI/GNDVI) $(date +'%Y-%m-%d %H:%M')"
         git push
