@@ -103,7 +103,7 @@ pip install earthengine-api pandas openpyxl folium numpy
 earthengine authenticate
 
 # マップ生成
-python generate_maps.py --last-date 2024-12-01
+python generate_maps.py --last-date 2025-12-6
 ```
 
 ## 📈 使い方
@@ -144,4 +144,4 @@ python generate_maps.py --last-date 2024-12-01
 
 ---
 
-**Last Updated**: 2025-11-05  
+**Last Updated**: 2025-12-08  
