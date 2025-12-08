@@ -654,9 +654,9 @@ m_gndvi.get_root().html.add_child(folium.Element(legend_gndvi))
 # ===== 保存 =====
 print("\n[8] マップ保存中...")
 
-m_ndvi.save(os.path.join(OUTPUT_DIR, 'index2026.html'))
-m_ndwi.save(os.path.join(OUTPUT_DIR, 'ndwi2026.html'))
-m_gndvi.save(os.path.join(OUTPUT_DIR, 'gndvi2026.html'))
+m_ndvi.save(os.path.join(OUTPUT_DIR, 'index.html'))
+m_ndwi.save(os.path.join(OUTPUT_DIR, 'ndwi.html'))
+m_gndvi.save(os.path.join(OUTPUT_DIR, 'gndvi.html'))
 
 print(f"  ✓ NDVIマップ: index.html")
 print(f"  ✓ NDWIマップ: ndwi.html")
