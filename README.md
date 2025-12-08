@@ -70,9 +70,9 @@ mugimap-shinjo/
 ├── .github/workflows/
 │   └── update-maps.yml       # 自動更新ワークフロー
 ├── output/
-│   ├── index.html            # NDVIマップ
-│   ├── ndwi.html             # NDWIマップ
-│   ├── gndvi.html            # GNDVIマップ
+│   ├── index2026.html            # NDVIマップ
+│   ├── ndwi2026.html             # NDWIマップ
+│   ├── gndvi2026.html            # GNDVIマップ
 │   └── observation_history.json
 └── README.md
 ```
