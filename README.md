@@ -7,13 +7,13 @@ Sentinel-2衛星画像を使った麦生育モニタリングシステム
 ## 📊 マップを見る
 
 ### 3つの植生指標マップ
-- **[NDVIマップ（植生活性度）](https://kitsukisaiseikyo-byte.github.io/mugimap-shinjo/)** 🌿  
+- **[NDVIマップ（植生活性度）](https://kitsukisaiseikyo-byte.github.io/mugimap-shinjo2026/)** 🌿  
   植物の光合成活性と生育状況を示します
   
-- **[NDWIマップ（水分状態）](https://kitsukisaiseikyo-byte.github.io/mugimap-shinjo/ndwi.html)** 💧  
+- **[NDWIマップ（水分状態）](https://kitsukisaiseikyo-byte.github.io/mugimap-shinjo2026/ndwi.html)** 💧  
   作物の水分ストレス状態を把握できます
   
-- **[GNDVIマップ（クロロフィル含量）](https://kitsukisaiseikyo-byte.github.io/mugimap-shinjo/gndvi.html)** 🍃  
+- **[GNDVIマップ（クロロフィル含量）](https://kitsukisaiseikyo-byte.github.io/mugimap-shinjo2026/gndvi.html)** 🍃  
   葉の健康状態とクロロフィル量を表示します
 
 ## 🔍 各指標の説明
@@ -70,9 +70,9 @@ mugimap-shinjo/
 ├── .github/workflows/
 │   └── update-maps.yml       # 自動更新ワークフロー
 ├── output/
-│   ├── index2026.html            # NDVIマップ
-│   ├── ndwi2026.html             # NDWIマップ
-│   ├── gndvi2026.html            # GNDVIマップ
+│   ├── index.html            # NDVIマップ
+│   ├── ndwi.html             # NDWIマップ
+│   ├── gndvi.html            # GNDVIマップ
 │   └── observation_history.json
 └── README.md
 ```
