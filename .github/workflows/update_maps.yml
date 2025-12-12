@@ -77,10 +77,10 @@ jobs:
     - name: 変更をコミット
       if: steps.check_changes.outputs.changed == 'true'
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+      　git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         rm -f private-key.json
-        
+
         # 全ての関連ファイルをステージング
         git add output/cache/*.json output/observation_history.json || true
         git add output/*.html || true 
