@@ -75,15 +75,25 @@ jobs:
         fi
         
     - name: 変更をコミット
-      if: steps.check_changes.outputs.changed == 'true'
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        rm -f private-key.json
-        git add output/cache/*.json output/observation_history.json || true
-        git add .
-        git commit -m "🌾 麦生育マップ自動更新 (NDVI/NDWI/GNDVI) $(date +'%Y-%m-%d %H:%M')"
-        git push
+      if: steps.check_changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        rm -f private-key.json
+        
+        # 全ての関連ファイルをステージング
+        git add output/cache/*.json output/observation_history.json || true
+        git add output/*.html || true 
+        git add .
+        
+        # ステージングされた変更があるかチェックし、ある場合のみコミットとプッシュを実行
+        if ! git diff-index --quiet HEAD --; then
+          echo "変更が検出されました。コミットを実行します。"
+          git commit -m "🌾 麦生育マップ自動更新 (NDVI/NDWI/GNDVI) $(date +'%Y-%m-%d %H:%M')"
+          git push
+        else
+          echo "✅ 変更をステージングしましたが、コミット対象となる差分がありませんでした。スキップします。"
+        fi
         
     - name: GitHub Pagesにデプロイ
       if: steps.check_changes.outputs.changed == 'true'
